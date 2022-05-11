@@ -7,12 +7,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="289.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.pavelf200205.phonedatabase.AddPhoneController">
+<AnchorPane prefHeight="233.0" prefWidth="448.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ua.pavelf200205.phonedatabase.AddPhoneController">
    <children>
-      <GridPane layoutX="26.0" layoutY="88.0" prefHeight="158.0" prefWidth="383.0">
+      <GridPane layoutX="33.0" layoutY="28.0" prefHeight="158.0" prefWidth="383.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="187.0" minWidth="10.0" prefWidth="97.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="292.0" minWidth="10.0" prefWidth="286.0" />
@@ -25,11 +23,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" />
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="patronymicField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="accountIDField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Прізвище" />
             <Label text="Ім'я" GridPane.rowIndex="1" />
             <Label text="По батькові" GridPane.rowIndex="2" />
@@ -37,12 +35,6 @@
             <Label text="Номер рахунку" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Label layoutX="127.0" layoutY="25.0" text="Додати абонента">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
-      <Button layoutX="320.0" layoutY="255.0" mnemonicParsing="false" text="Додати" />
-      <Button layoutX="388.0" layoutY="255.0" mnemonicParsing="false" text="Скасувати" />
+      <Button layoutX="331.0" layoutY="195.0" mnemonicParsing="false" onAction="#onSubmitButtonClick" prefHeight="17.0" prefWidth="98.0" text="Додати" />
    </children>
 </AnchorPane>

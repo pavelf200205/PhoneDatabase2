@@ -10,19 +10,14 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class PhoneApplication extends Application {
-    private ObservableList<Phone> phoneData = FXCollections.observableArrayList();
+    private final ObservableList<Phone> phoneData = FXCollections.observableArrayList();
 
     public ObservableList<Phone> getPhoneData() {
         return phoneData;
     }
 
     public PhoneApplication() {
-
-        phoneData.add(new Phone("Fadieiev", "Pavlo", "Vyacheslavovich", 1));
-        phoneData.add(new Phone("Fadieiev", "Artyom", "Vyacheslavovich", 1));
-        phoneData.add(new Phone("Fadieiev", "Pavlo", "Vyacheslavovich", 1));
-        phoneData.add(new Phone("Fadieiev", "Pavlo", "Vyacheslavovich", 1));
-        phoneData.add(new Phone("Fadieiev", "Pavlo", "Vyacheslavovich", 1));
+        phoneData.add(new Phone("Pavlo", "Fadieiev", "Vyacheslavovich", 1234, "Mykolaiv"));
     }
 
     @Override
@@ -31,11 +26,10 @@ public class PhoneApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         PhoneOverviewController controller = fxmlLoader.getController();
         controller.setMainApp(this);
-        stage.setTitle("Hello!");
+        stage.setTitle("Список абонентів");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-
     }
 
     public static void main(String[] args) {

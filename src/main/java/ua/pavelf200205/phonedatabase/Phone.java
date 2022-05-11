@@ -10,21 +10,52 @@ public class Phone implements Serializable {
     private final StringProperty firstName;
     private final StringProperty lastName;
     private final StringProperty patronymic;
-    private final IntegerProperty accountID;
+    private final SimpleIntegerProperty accountID;
     private StringProperty city;
+    private SimpleIntegerProperty domesticCallsTime; //Minutes
+    private SimpleIntegerProperty interCityCallsTime; //Minutes
 
-    private IntegerProperty domesticCallsTime; //Minutes
-    private IntegerProperty interCityCallsTime; //Minutes
-
-    public Phone(String firstName, String lastName, String patronymic, int accountID) {
+    public Phone(String firstName, String lastName, String patronymic, int accountID, String city) {
         this.firstName = new SimpleStringProperty(firstName);
         this.lastName = new SimpleStringProperty(lastName);
         this.patronymic = new SimpleStringProperty(patronymic);
         this.accountID = new SimpleIntegerProperty(accountID);
+        this.city = new SimpleStringProperty(city);
         id = new SimpleIntegerProperty(counter++);
         domesticCallsTime = new SimpleIntegerProperty(0);
         interCityCallsTime = new SimpleIntegerProperty(0);
 
+    }
+
+    public String toString() {
+        return "id=" + getId() + ", рахунок №" + getAccountID() + " " + getLastName() + " " + getFirstName() + " " + getPatronymic() + "\n";
+    }
+
+    public int getDomesticCallsTime() {
+        return domesticCallsTime.get();
+    }
+
+
+    public IntegerProperty domesticCallsTimeProperty() {
+        return domesticCallsTime;
+    }
+
+    public int getInterCityCallsTime() {
+        return interCityCallsTime.get();
+    }
+
+    public IntegerProperty interCityCallsTimeProperty() {
+        return interCityCallsTime;
+    }
+
+    public void updateDomesticCallsTime(int minutes) {
+        if(minutes > 0)
+            domesticCallsTime.set(domesticCallsTime.get()+minutes);
+    }
+
+    public void updateIntercityCallsTime(int minutes) {
+        if(minutes > 0)
+            interCityCallsTime.set(interCityCallsTime.get()+minutes);
     }
 
     public int getId() {
@@ -59,12 +90,25 @@ public class Phone implements Serializable {
         return patronymic;
     }
 
-    public long getAccountID() {
+    public int getAccountID() {
         return accountID.get();
     }
 
-    public IntegerProperty accountIDProperty() {
+    public SimpleIntegerProperty accountIDProperty() {
         return accountID;
     }
+
+    public String getCity() {
+        return city.get();
+    }
+
+    public StringProperty cityProperty() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city.set(city);
+    }
+
 }
 
