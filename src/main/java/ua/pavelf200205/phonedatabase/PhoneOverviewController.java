@@ -1,14 +1,12 @@
 package ua.pavelf200205.phonedatabase;
 
 import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -177,7 +175,7 @@ public class PhoneOverviewController {
     protected void showByAccountIDRange() {
         int startID = IDRangeStartSpinner.getValue();
         int stopID = IDRangeStopSpinner.getValue();
-        phoneTable.setItems(logic.findByIDRange(mainApp.getPhoneData(), startID, stopID));
+        phoneTable.setItems(logic.findByAccountIDRange(mainApp.getPhoneData(), startID, stopID));
     }
 
     public void setMainApp(PhoneApplication app) {
