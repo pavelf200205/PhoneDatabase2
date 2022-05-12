@@ -4,21 +4,25 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Logic {
 
-    public Map<String, List<Phone>> generateCitiesMap(ObservableList<Phone> allPhones) {
+//    public Map<String, List<Phone>> generateCitiesMap(ObservableList<Phone> allPhones) {
+//
+//        Map<String, List<Phone>> map = new HashMap<>();
+//        for(Phone phone : allPhones) {
+//            if(map.containsKey(phone.getCity()))
+//                map.get(phone.getCity()).add(phone);
+//            else {
+//                map.put(phone.getCity(), new ArrayList<>(List.of(phone)));
+//            }
+//        };
+//        return map;
+//    }
 
-        Map<String, List<Phone>> map = new HashMap<>();
-        for(Phone phone : allPhones) {
-            if(map.containsKey(phone.getCity()))
-                map.get(phone.getCity()).add(phone);
-            else {
-                map.put(phone.getCity(), new ArrayList<>(List.of(phone)));
-            }
-
-        }
-        return map;
+    public Map<String, List<Phone>> generateCitiesMap(List<Phone> allPhones) {
+        return allPhones.stream().collect(Collectors.groupingBy(Phone::getCity));
     }
 
     public boolean checkIfIDUnique(ObservableList<Phone> allPhones, int accountID) {
@@ -43,8 +47,8 @@ public class Logic {
        return FXCollections.observableList(allPhones.stream()
                 .filter(x -> x.getInterCityCallsTime()!= 0)
                 .sorted(Comparator.comparing(Phone::getLastName)
-                .thenComparing(Phone::getFirstName)
-                .thenComparing(Phone::getPatronymic))
+                    .thenComparing(Phone::getFirstName)
+                    .thenComparing(Phone::getPatronymic))
                 .toList());
 //        ObservableList<Phone> result = FXCollections.observableArrayList();
 //        for(Phone phone : allPhones) {
